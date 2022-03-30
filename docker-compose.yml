@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  api:
+    build: .
+    container_name: api
+    env_file:
+      - ./.env
+    restart: always
+    ports:
+      - "5003:5003"
