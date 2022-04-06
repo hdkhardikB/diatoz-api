@@ -2,10 +2,7 @@ import {
   Body,
   Controller,
   Get,
-  HttpException,
-  HttpStatus,
   Post,
-  Put,
   Request,
   Res,
   UseGuards,
@@ -16,7 +13,6 @@ import { CreateUserDTO } from './dto/create.user.dto';
 import { LoginUserDTO } from './dto/login.user.dto';
 import { JwtAuthGuard } from './guards/jwt.auth.gruad';
 import { LocalAuthGuard } from './guards/local.auth.guard';
-import { RegistrationStatus } from './interfaces/registration';
 
 @Controller('auth')
 export class AuthController {
@@ -34,6 +30,7 @@ export class AuthController {
     res.json(auth);
   }
 
+  // To get profile detail
   @UseGuards(JwtAuthGuard)
   @Get('me')
   getLoggedInUser(@Request() req) {
