@@ -1,11 +1,12 @@
-import * as bcrypt from 'bcrypt';
-
-import UserEntity from '@entities/user.entity';
-import { CreateUserDTO } from '@modules/auth/dto/create.user.dto';
-import { LoginUserDTO } from '@modules/auth/dto/login.user.dto';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
+
+import { CreateUserDTO } from '@modules/auth/dto/create.user.dto';
+import { LoginUserDTO } from '@modules/auth/dto/login.user.dto';
+
+import UserEntity from '@entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -82,7 +83,6 @@ export class UserService {
       const user = await this.userRepository.save(userEntity);
       return user;
     } catch (e) {
-      console.log(e);
       throw e;
     }
   }
